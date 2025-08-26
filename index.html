@@ -122,7 +122,7 @@
 
     #promise h2{ font-size: var(--typo-promise-h2, 1.8rem); line-height:1.5; }
 
-    /* ✅ 추가: 섹션2 'the day:n'만 변수로 제어 (inline 2.1rem 덮기) */
+    /* 섹션2 'the day:n'만 변수로 제어 (inline 2.1rem 덮기) */
     #philosophy strong{ font-size: var(--typo-phil-strong, 2.1rem) !important; }
 
     /* 3) 모바일(≤768px) — 섹션별 폰트 사이즈 */
@@ -178,7 +178,7 @@
 
         --typo-phil-p:       2.2rem;
         --typo-phil-lh:      2.0;
-        --typo-phil-strong:  2.6rem;   /* inline 2.1rem 대체 */
+        --typo-phil-strong:  2.6rem;
 
         --typo-origin-p:   2.2rem;
         --typo-origin-lh:  2.0;
@@ -190,54 +190,22 @@
       }
     }
 
-/* === S4 image positioning (tablet & desktop) === */
-#essence .image-column{ overflow: hidden; }
+    /* ===== 섹션4 이미지 최종 규칙 ===== */
+    /* 모바일: 가로 100%, 세로 자동(잘림 최소화) */
+    #essence .s4img{ display:block; width:100%; height:auto; }
 
-@media (min-width:769px) and (max-width:1023px){ /* Tablet */
-  #essence .image-column img{
-    width:100% !important;
-    height:100% !important;          /* 칼럼을 꽉 채워야 object-position이 의미 있음 */
-    aspect-ratio:auto !important;    /* 4:5 강제 해제 */
-    object-fit:cover !important;     /* 꽉 채우되 */
-    object-position:50% 72% !important; /* 아래를 더 보이게(60~80% 사이로 조정) */
-    transform:none !important;       /* 이전 translateY 제거 */
-  }
-}
-
-@media (min-width:1024px){           /* Desktop */
-  #essence .image-column img{
-    width:100% !important;
-    height:100% !important;
-    aspect-ratio:auto !important;    /* 추가 */
-    object-fit:cover !important;
-    object-position:50% 72% !important; /* 필요시 68/70/75%로 조정 */
-    transform:none !important;
-  }
-}
-
-
-/* === FIX: Section 4 image — show full image (no top/bottom crop) === */
-/* Tablet & Desktop */
-@media (min-width:769px){
-  #essence .image-column{
-    display: flex;
-    align-items: center;     /* 세로 가운데 */
-    justify-content: center; /* 가로 가운데 */
-    overflow: hidden;
-  }
-  #essence .image-column img{
-    width: 100% !important;
-    height: auto !important;       /* ← 100% 강제 해제 */
-    max-height: 100% !important;   /* 칼럼 높이 넘지 않도록 */
-    aspect-ratio: auto !important; /* 4:5 강제 해제 */
-    object-fit: contain !important;/* 전체 보이게(자름 X) */
-    object-position: center center !important;
-    transform: none !important;    /* 혹시 남아있을 이동값 제거 */
-  }
-}
-
-
-
+    /* 태블릿/데스크탑: 칼럼을 꽉 채우되, 아래쪽을 더 보이게 */
+    @media (min-width:769px){
+      #essence .image-column{ overflow:hidden; }
+      #essence .s4img{
+        width:100% !important;
+        height:100% !important;       /* 칼럼 높이에 맞추고 */
+        aspect-ratio:auto !important;  /* 4:5 강제 해제 */
+        object-fit:cover !important;   /* 꽉 채우며 */
+        object-position:50% 72% !important; /* 아래 더 보이게(68~80% 사이로 조절) */
+        transform:none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -262,7 +230,13 @@
         <h2 id="philosophy-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">브랜드 철학</h2>
 
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-        <p><br><strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+        <p><br>
+          <strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">
+            the day:n
+          </strong>은<br>
+          당신의 하루가 시작되는<br>
+          그 찰나의 순간에 주목합니다.
+        </p>
       </div>
     </section>
 
@@ -280,7 +254,7 @@
       </div>
     </section>
 
-    <!-- 섹션4 상단: 흰색 여백 (요청대로 lg 2줄) -->
+    <!-- 섹션4 상단: 흰색 여백 (lg 2줄) -->
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
 
@@ -295,18 +269,15 @@
           </div>
         </div>
         <div class="image-column" style="flex-basis:50%">
-          <img
-            src="assets/images/section4.jpg"
-            alt="the day:n 파우더 워시 감성 이미지"
-            loading="lazy" decoding="async"
-            width="800" height="1000"
-            style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
-          />
+          <img class="s4img"
+               src="assets/images/section4.jpg"
+               alt="the day:n 파우더 워시 감성 이미지"
+               loading="lazy" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 (xl 2줄 유지) -->
+    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 (xl 2줄) -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
@@ -320,7 +291,7 @@
       </div>
     </section>
 
-    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 (xl 2줄 유지) -->
+    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 (xl 2줄) -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
