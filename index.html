@@ -122,70 +122,73 @@
 
     #promise h2{ font-size: var(--typo-promise-h2, 1.8rem); line-height:1.5; }
 
-/* 3) 모바일(≤768px) — 섹션별 폰트 사이즈 */
-@media (max-width:768px){
-  :root{
-    /* SECTION 1: HERO */
-    --typo-hero-h1: 2.4rem;
-    --typo-hero-p:  0.95rem;
+    /* ✅ 추가: 섹션2 'the day:n'만 변수로 제어 (inline 2.1rem 덮기) */
+    #philosophy strong{ font-size: var(--typo-phil-strong, 2.1rem) !important; }
 
-    /* SECTION 2: PHILOSOPHY */
-    --typo-phil-p:       1.2rem;   /* 본문 */
-    --typo-phil-lh:      1.8;
-    --typo-phil-strong:  1.6rem;   /* 'the day:n' 굵은 글자 */
+    /* 3) 모바일(≤768px) — 섹션별 폰트 사이즈 */
+    @media (max-width:768px){
+      :root{
+        /* SECTION 1: HERO */
+        --typo-hero-h1: 2.4rem;
+        --typo-hero-p:  0.95rem;
 
-    /* SECTION 3: ORIGIN */
-    --typo-origin-p:   1.2rem;
-    --typo-origin-lh:  1.8;
+        /* SECTION 2: PHILOSOPHY */
+        --typo-phil-p:       1.2rem;   /* 본문 */
+        --typo-phil-lh:      1.8;
+        --typo-phil-strong:  1.6rem;   /* 'the day:n' 굵은 글자 */
 
-    /* SECTION 4: ESSENCE */
-    --typo-essence-title: 2.2rem;
-    --typo-essence-p:     1.15rem;
+        /* SECTION 3: ORIGIN */
+        --typo-origin-p:   1.2rem;
+        --typo-origin-lh:  1.8;
 
-    /* SECTION 5: PROMISE */
-    --typo-promise-h2: 1.8rem;
-  }
-}
+        /* SECTION 4: ESSENCE */
+        --typo-essence-title: 2.2rem;
+        --typo-essence-p:     1.15rem;
 
-/* 4) 태블릿(769–1023px) — 섹션별 폰트 사이즈 */
-@media (min-width:769px) and (max-width:1023px){
-  :root{
-    --typo-hero-h1: 3.4rem;
-    --typo-hero-p:  1.08rem;
+        /* SECTION 5: PROMISE */
+        --typo-promise-h2: 1.8rem;
+      }
+    }
 
-    --typo-phil-p:       1.4rem;
-    --typo-phil-lh:      1.9;
-    --typo-phil-strong:  1.8rem;
+    /* 4) 태블릿(769–1023px) — 섹션별 폰트 사이즈 */
+    @media (min-width:769px) and (max-width:1023px){
+      :root{
+        --typo-hero-h1: 3.4rem;
+        --typo-hero-p:  1.08rem;
 
-    --typo-origin-p:   1.4rem;
-    --typo-origin-lh:  1.9;
+        --typo-phil-p:       1.4rem;
+        --typo-phil-lh:      1.9;
+        --typo-phil-strong:  1.8rem;
 
-    --typo-essence-title: 2.6rem;
-    --typo-essence-p:     1.1rem;
+        --typo-origin-p:   1.4rem;
+        --typo-origin-lh:  1.9;
 
-    --typo-promise-h2: 2.6rem;
-  }
-}
+        --typo-essence-title: 2.6rem;
+        --typo-essence-p:     1.1rem;
 
-/* 5) 데스크탑(≥1024px) — 섹션별 폰트 사이즈 */
-@media (min-width:1024px){
-  :root{
-    --typo-hero-h1: 4.0rem;
-    --typo-hero-p:  1.6rem;
+        --typo-promise-h2: 2.6rem;
+      }
+    }
 
-    --typo-phil-p:       2.2rem;
-    --typo-phil-lh:      2.0;
-    --typo-phil-strong:  2.6rem;   /* inline 2.1rem 대체 */
+    /* 5) 데스크탑(≥1024px) — 섹션별 폰트 사이즈 */
+    @media (min-width:1024px){
+      :root{
+        --typo-hero-h1: 4.0rem;
+        --typo-hero-p:  1.6rem;
 
-    --typo-origin-p:   2.2rem;
-    --typo-origin-lh:  2.0;
+        --typo-phil-p:       2.2rem;
+        --typo-phil-lh:      2.0;
+        --typo-phil-strong:  2.6rem;   /* inline 2.1rem 대체 */
 
-    --typo-essence-title: 3.0rem;
-    --typo-essence-p:     1.20rem;
+        --typo-origin-p:   2.2rem;
+        --typo-origin-lh:  2.0;
 
-    --typo-promise-h2: 2.6rem;
-  }
-}
+        --typo-essence-title: 3.0rem;
+        --typo-essence-p:     1.20rem;
+
+        --typo-promise-h2: 2.6rem;
+      }
+    }
 
   </style>
 </head>
