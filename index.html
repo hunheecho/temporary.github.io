@@ -205,6 +205,26 @@
 }
 
 
+/* Tablet: section4 오른쪽 이미지 살짝 위로 */
+@media (min-width:769px) and (max-width:1023px){
+  #essence .image-column{ overflow:hidden; }
+  #essence .image-column img{
+    transform: translateY(-6%);   /* -1% ~ -6% 사이에서 미세 조정 */
+    will-change: transform;
+  }
+}
+
+/* Desktop: section4 오른쪽 이미지 살짝 위로 */
+@media (min-width:1024px){
+  #essence .image-column{ overflow:hidden; }
+  #essence .image-column img{
+    transform: translateY(-6%);   /* -1% ~ -6% 사이에서 미세 조정 */
+    will-change: transform;
+  }
+}
+
+
+
   }
 }
 
