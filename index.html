@@ -122,55 +122,71 @@
 
     #promise h2{ font-size: var(--typo-promise-h2, 1.8rem); line-height:1.5; }
 
-    /* 3) 모바일(≤768px) — 필요시 여기 숫자만 편집 */
-    @media (max-width:768px){
-      /* 예시) 모바일에서만 더 작게/크게 하고 싶으면 아래 값 조정
-         기본은 기존 디자인을 유지하도록 변경 없음 */
-      /* :root{
-        --typo-hero-h1: 2.4rem;
-        --typo-hero-p:  0.95rem;
-        --typo-essence-title: 2.2rem;
-        --typo-essence-p:     0.98rem;
-      } */
-    }
+/* 3) 모바일(≤768px) — 섹션별 폰트 사이즈 */
+@media (max-width:768px){
+  :root{
+    /* SECTION 1: HERO */
+    --typo-hero-h1: 2.4rem;
+    --typo-hero-p:  0.95rem;
 
-    /* 4) 태블릿(769–1023px) */
-    @media (min-width:769px) and (max-width:1023px){
-      :root{
-        --typo-hero-h1: 3.4rem;
-        --typo-hero-p:  1.08rem;
+    /* SECTION 2: PHILOSOPHY */
+    --typo-phil-p:       1.2rem;   /* 본문 */
+    --typo-phil-lh:      1.8;
+    --typo-phil-strong:  1.6rem;   /* 'the day:n' 굵은 글자 */
 
-        --typo-phil-p:  1.2rem;
-        --typo-phil-lh: 1.9;
+    /* SECTION 3: ORIGIN */
+    --typo-origin-p:   1.2rem;
+    --typo-origin-lh:  1.8;
 
-        --typo-origin-p:  1.2rem;
-        --typo-origin-lh: 1.9;
+    /* SECTION 4: ESSENCE */
+    --typo-essence-title: 2.2rem;
+    --typo-essence-p:     1.0rem;
 
-        --typo-essence-title: 2.6rem;
-        --typo-essence-p:     1.06rem;
+    /* SECTION 5: PROMISE */
+    --typo-promise-h2: 1.8rem;
+  }
+}
 
-        --typo-promise-h2: 1.8rem; /* 유지 */
-      }
-    }
+/* 4) 태블릿(769–1023px) — 섹션별 폰트 사이즈 */
+@media (min-width:769px) and (max-width:1023px){
+  :root{
+    --typo-hero-h1: 3.4rem;
+    --typo-hero-p:  1.08rem;
 
-    /* 5) 데스크탑(≥1024px) */
-    @media (min-width:1024px){
-      :root{
-        --typo-hero-h1: 3.6rem;   /* 원하면 3.8까지 */
-        --typo-hero-p:  1.12rem;
+    --typo-phil-p:       1.2rem;
+    --typo-phil-lh:      1.9;
+    --typo-phil-strong:  1.8rem;
 
-        --typo-phil-p:  1.35rem;
-        --typo-phil-lh: 2.0;
+    --typo-origin-p:   1.2rem;
+    --typo-origin-lh:  1.9;
 
-        --typo-origin-p:  1.35rem;
-        --typo-origin-lh: 2.0;
+    --typo-essence-title: 2.6rem;
+    --typo-essence-p:     1.1rem;
 
-        --typo-essence-title: 3.0rem;
-        --typo-essence-p:     1.20rem;
+    --typo-promise-h2: 1.8rem;
+  }
+}
 
-        --typo-promise-h2: 1.8rem; /* 유지 */
-      }
-    }
+/* 5) 데스크탑(≥1024px) — 섹션별 폰트 사이즈 */
+@media (min-width:1024px){
+  :root{
+    --typo-hero-h1: 3.6rem;
+    --typo-hero-p:  1.12rem;
+
+    --typo-phil-p:       1.35rem;
+    --typo-phil-lh:      2.0;
+    --typo-phil-strong:  2.1rem;   /* inline 2.1rem 대체 */
+
+    --typo-origin-p:   1.35rem;
+    --typo-origin-lh:  2.0;
+
+    --typo-essence-title: 3.0rem;
+    --typo-essence-p:     1.20rem;
+
+    --typo-promise-h2: 1.8rem;
+  }
+}
+
   </style>
 </head>
 <body>
