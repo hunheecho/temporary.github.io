@@ -253,7 +253,7 @@ footer {
     }
 
     #promise h2 {
-        font-size: clamp(1.6rem, 6.5vw, 2rem);
+        font-size: clamp(1.4rem, 5.5vw, 1.8rem);
         line-height: 1.5;
     }
 }
