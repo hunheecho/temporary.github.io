@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>the day:n - The Ritual of Purity</title>
 
-  <!-- Critical CSS: 최소 필수 스타일 -->
+  <!-- Critical CSS: 최소 필수 -->
   <style>
     :root{
       --font-serif:'Playfair Display',serif;
@@ -15,13 +15,23 @@
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--font-sans);font-weight:300}
     main{display:block}
-    .section{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;box-sizing:border-box;padding:140px 40px;overflow:hidden}
+
+    /* 섹션 기본 */
+    .section{
+      width:100%; min-height:100vh;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      position:relative; box-sizing:border-box; padding:140px 40px; overflow:hidden;
+    }
     .content-wrapper{max-width:1100px;width:100%;z-index:2}
-    .video-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-    .overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);z-index:1}
+    .video-background{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
+    .overlay{position:absolute; inset:0; background:rgba(0,0,0,.25); z-index:1}
+
+    /* 히어로 텍스트 */
     #hero .content-wrapper{color:#fff}
     #hero h1{font-family:var(--font-serif);font-size:3.2rem;font-weight:500;line-height:1.4;margin:0 0 24px}
     #hero p{font-size:1.05rem;letter-spacing:.5px}
+
+    /* 모바일 기본 패딩 축소 */
     @media (max-width:768px){
       .section{padding:100px 25px;min-height:80vh}
       #hero h1{font-size:2.4rem}
@@ -38,9 +48,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
   </noscript>
 
-  <!-- 메인 CSS: preload 후 stylesheet로 전환 -->
+  <!-- 메인 CSS: preload → stylesheet -->
   <link rel="preload" as="style" href="assets/css/style.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
+
+  <!-- OVERRIDES: 메인 CSS 이후 적용(내가 원하는 효과 보장) -->
+  <style>
+    /* 섹션 간 여백(데스크탑) */
+    .section + .section{ margin-top:64px; }
+
+    /* 모바일에서 영상 섹션을 더 '길게' 보이도록 */
+    @media (max-width:768px){
+      /* 섹션 간 여백 강화(모바일) */
+      .section + .section{ margin-top:72px; }
+
+      /* 영상 배경 섹션(#hero, #origin)만 세로 비율을 더 키움 */
+      #hero, #origin{
+        /* 뷰포트보다 더 길게 */
+        min-height:115vh;
+        /* 박스 자체 비율도 세로형으로 유도 */
+        aspect-ratio:9 / 16;
+      }
+    }
+    @media (max-width:480px){
+      /* 초소형 폰은 더 길게 */
+      #hero, #origin{ min-height:120vh; }
+    }
+  </style>
 </head>
 <body>
   <main>
@@ -101,7 +135,7 @@
     <!-- PROMISE (섹션5) -->
     <section id="promise" class="section" aria-labelledby="promise-title" style="background:var(--color-accent)">
       <div class="content-wrapper">
-        <h2 id="promise-title" style="font-family:var(--font-serif);font-size:2.4rem;line-height:1.6;margin:0 0 40px">
+        <h2 id="promise-title" style="font-family:var(--font-serif);font-size:2.0rem;line-height:1.6;margin:0 0 40px">
           당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.
         </h2>
         <img src="assets/images/Logo.png" alt="the day:n 로고" style="max-width:180px;height:auto;margin-top:20px" />
