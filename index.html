@@ -2,66 +2,116 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>the day:n - The Ritual of Purity</title>
-  <!-- 외부 CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- 0) Critical CSS (fold 위 최소 스타일) -->
+  <style>
+    :root{
+      --font-serif:'Playfair Display',serif;
+      --font-sans:'IBM Plex Sans KR',sans-serif;
+      --color-text:#2c2c2c; --color-background:#fdfdfc; --color-accent:#f4f1ea;
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--font-sans);font-weight:300}
+    main{display:block}
+    .section{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;box-sizing:border-box;padding:140px 40px;overflow:hidden}
+    .content-wrapper{max-width:1100px;width:100%;z-index:2}
+    .video-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);z-index:1}
+    #hero .content-wrapper{color:#fff}
+    #hero h1{font-family:var(--font-serif);font-size:3.2rem;font-weight:500;line-height:1.4;margin:0 0 24px}
+    #hero p{font-size:1.05rem;letter-spacing:.5px}
+    @media (max-width:768px){
+      .section{padding:100px 25px;min-height:80vh}
+      #hero h1{font-size:2.4rem}
+      #hero p{font-size:.95rem}
+    }
+  </style>
+
+  <!-- 1) Google Fonts 최적화: preconnect + preload(지연 적용) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap"
+        rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- 2) 메인 CSS 지연 로딩: preload → stylesheet 스왑 -->
+  <link rel="preload" as="style" href="assets/css/style.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
 </head>
 <body>
   <main>
-
-    <section id="hero" class="section">
-      <video class="video-background" autoplay loop muted playsinline src="section1.mp4"></video>
+    <!-- HERO -->
+    <section id="hero" class="section" aria-labelledby="hero-title">
+      <video class="video-background" autoplay loop muted playsinline preload="metadata"
+             src="assets/images/section1.mp4"></video>
       <div class="overlay"></div>
       <div class="content-wrapper">
-        <h1>하루의 시작,<br>가장 순수한 순간.</h1>
+        <h1 id="hero-title">하루의 시작,<br>가장 순수한 순간.</h1>
         <p>the day:n powder wash</p>
       </div>
     </section>
 
-    <section id="philosophy" class="section">
+    <!-- PHILOSOPHY -->
+    <section id="philosophy" class="section" aria-labelledby="philosophy-title" style="background:var(--color-accent)">
       <div class="content-wrapper">
+        <h2 id="philosophy-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">브랜드 철학</h2>
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-        <p><br><strong>the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+        <p><br><strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
       </div>
     </section>
 
-    <section id="origin" class="section">
-      <video class="video-background" autoplay loop muted playsinline src="section3.mp4"></video>
+    <!-- ORIGIN -->
+    <section id="origin" class="section" aria-labelledby="origin-title">
+      <video class="video-background" autoplay loop muted playsinline preload="metadata"
+             src="assets/images/section3.mp4"></video>
       <div class="overlay"></div>
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)">
+        <h2 id="origin-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">원천</h2>
         <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
       </div>
     </section>
 
-    <section id="essence" class="section">
-      <div class="two-column-layout">
-        <div class="text-column">
-          <div class="text-column-content">
-            <h2>본질에 집중하다.</h2>
-            <p>정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.</p>
-            <p>자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
+    <!-- ESSENCE -->
+    <section id="essence" class="section" aria-labelledby="essence-title" style="padding:0;min-height:100vh;display:flex">
+      <div class="two-column-layout" style="display:flex;width:100%;align-items:stretch">
+        <div class="text-column" style="flex-basis:50%;display:flex;align-items:center;justify-content:center;text-align:left;box-sizing:border-box;padding:5%">
+          <div class="text-column-content" style="max-width:450px">
+            <h2 id="essence-title" style="font-family:var(--font-serif);font-size:3rem;margin:0 0 25px">본질에 집중하다.</h2>
+            <p style="font-size:1.1rem;line-height:1.9;margin:0 0 1.2em">정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.</p>
+            <p style="font-size:1.1rem;line-height:1.9;margin:0 0 1.2em">자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
           </div>
         </div>
-        <div class="image-column" style="background-image: url('section4.jpg');"></div>
+        <div class="image-column" style="flex-basis:50%">
+          <img src="assets/images/section4.jpg" alt="the day:n 파우더 워시 감성 이미지"
+               loading="lazy" decoding="async"
+               style="width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
       </div>
     </section>
 
-    <section id="promise" class="section">
+    <!-- PROMISE -->
+    <section id="promise" class="section" aria-labelledby="promise-title" style="background:var(--color-accent)">
       <div class="content-wrapper">
-        <h2>당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.</h2>
-      <img src="Logo.png" alt="the day:n logo">
+        <h2 id="promise-title" style="font-family:var(--font-serif);font-size:2.8rem;line-height:1.6;margin:0 0 40px">
+          당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.
+        </h2>
+        <img src="assets/images/Logo.png" alt="the day:n 로고" style="max-width:180px;height:auto;margin-top:20px" />
       </div>
     </section>
-
   </main>
 
-  <footer>
+  <footer style="padding:50px 20px;text-align:center;font-size:.9rem;color:#888;background:var(--color-background)">
     <p>&copy; 2025 attention international. All Rights Reserved.</p>
     <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
   </footer>
 
-  <!-- 외부 JS -->
+  <!-- 3) JS 지연 로딩 -->
   <script defer src="assets/js/main.js"></script>
+
+  <!-- 4) 아래-폴드 이미지/스타일은 브라우저가 알아서 지연 로드 -->
 </body>
 </html>
