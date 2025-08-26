@@ -190,7 +190,7 @@
       }
     }
 
-/* === S4 image positioning (tablet & desktop) — REPLACE old S4 blocks with this === */
+/* === S4 image positioning (tablet & desktop) === */
 #essence .image-column{ overflow: hidden; }
 
 @media (min-width:769px) and (max-width:1023px){ /* Tablet */
@@ -200,7 +200,7 @@
     aspect-ratio:auto !important;    /* 4:5 강제 해제 */
     object-fit:cover !important;     /* 꽉 채우되 */
     object-position:50% 72% !important; /* 아래를 더 보이게(60~80% 사이로 조정) */
-    transform:none !important;       /* 이전 translateY 시도 제거 */
+    transform:none !important;       /* 이전 translateY 제거 */
   }
 }
 
@@ -208,15 +208,13 @@
   #essence .image-column img{
     width:100% !important;
     height:100% !important;
+    aspect-ratio:auto !important;    /* 추가 */
     object-fit:cover !important;
-    object-position:50% 72% !important; /* 필요시 68/70/75%로 미세조정 */
+    object-position:50% 72% !important; /* 필요시 68/70/75%로 조정 */
     transform:none !important;
   }
 }
 
-
-  }
-}
 
 
   </style>
