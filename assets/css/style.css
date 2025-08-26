@@ -1,126 +1,182 @@
-
+/* NOTE: Google Fonts는 index.html <head>에서 로드합니다. 여기서는 @import를 사용하지 않습니다. */
 
 :root {
-    --font-serif: 'Playfair Display', serif;
-    --font-sans: 'IBM Plex Sans KR', sans-serif;
-    --color-text: #2c2c2c;
-    --color-background: #fdfdfc;
-    --color-accent: #f4f1ea; 
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'IBM Plex Sans KR', sans-serif;
+  --color-text: #2c2c2c;
+  --color-background: #fdfdfc;
+  --color-accent: #f4f1ea;
+  --color-text-subtle: #757575;
 }
 
 /* Basic Reset and Smooth Scrolling */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* 1rem = 16px */
+}
 
 body {
-    margin: 0;
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    font-weight: 300;
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.8;
 }
 
 main { display: block; }
 
 /* Default Section Structure */
 .section {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    box-sizing: border-box;
-    padding: 140px 40px;
-    overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 8.75rem 2.5rem; /* 140px 40px */
+  overflow: hidden;
 }
 
-.content-wrapper { max-width: 1100px; width: 100%; z-index: 2; }
+.content-wrapper {
+  max-width: 68.75rem; /* 1100px */
+  width: 100%;
+  z-index: 2;
+}
 
-.video-background, .image-background {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; z-index: 0;
+.video-background,
+.image-background {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .overlay {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.25); z-index: 1;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
 }
 
 /* Section 1: Hero */
-#hero .content-wrapper { color: white; }
+#hero .content-wrapper { color: #fff; }
 #hero h1 {
-    font-family: var(--font-serif);
-    font-size: 3.8rem; font-weight: 500; line-height: 1.4;
-    margin: 0 0 30px 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 1.875rem; /* 30px */
 }
-#hero p { font-size: 1.2rem; letter-spacing: 1px; }
+#hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  letter-spacing: 1px;
+}
 
 /* Section 2: Philosophy */
 #philosophy { background-color: var(--color-accent); }
 #philosophy p {
-    font-size: 1.8rem; line-height: 2.2;
-    max-width: 750px; margin: 15px auto;
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  line-height: 1.8;
+  max-width: 46.875rem; /* 750px */
+  margin: 1rem auto;
 }
 #philosophy strong {
-    font-family: var(--font-serif);
-    font-weight: 500; font-size: 2.1rem;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
 }
 
-/* Section 3: Origin */
-#origin .content-wrapper { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-#origin p { font-size: 1.8rem; line-height: 2.2; font-weight: 400; }
+/* Section 3 (영상): Origin */
+#origin .content-wrapper { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+#origin p {
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  line-height: 1.8;
+  font-weight: 400;
+}
 
-/* Section 4: Essence (two-column) */
+/* Section 4 (이미지): Essence */
 #essence { padding: 0; min-height: 100vh; display: flex; }
 .two-column-layout { display: flex; width: 100%; align-items: stretch; }
 .text-column {
-    flex-basis: 50%; display: flex; align-items: center; justify-content: center;
-    text-align: left; box-sizing: border-box; padding: 5%;
+  flex-basis: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-align: left; box-sizing: border-box; padding: 5%;
 }
-.image-column { flex-basis: 50%; background-size: cover; background-position: center; }
-.text-column-content { max-width: 450px; }
-.text-column h2 { font-family: var(--font-serif); font-size: 3rem; margin-bottom: 25px; }
-.text-column p { font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.2em; }
+.image-column { flex-basis: 50%; position: relative; }
+.image-column img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.text-column-content { max-width: 28.125rem; /* 450px */ }
+.text-column h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  margin-bottom: 1.5rem; /* 25px */
+}
+.text-column p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.9;
+  margin-bottom: 1.2em;
+}
 
 /* Section 5: Promise */
 #promise { background-color: var(--color-accent); }
 #promise h2 {
-    font-family: var(--font-serif); font-size: 2.8rem; line-height: 1.6; margin-bottom: 40px;
+  font-family: var(--font-serif);
+  font-size: clamp(2.0rem, 5vw, 2.8rem);
+  line-height: 1.6;
+  margin-bottom: 2.5rem; /* 40px */
 }
-#promise img { max-width: 180px; height: auto; margin-top: 20px; }
+#promise img { max-width: 11.25rem; height: auto; margin-top: 1.25rem; }
 
 /* Footer */
-footer { padding: 50px 20px; text-align: center; font-size: 0.9rem; color: #888; background-color: var(--color-background); }
+footer {
+  padding: 3.125rem 1.25rem; /* 50px 20px */
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-subtle);
+  background-color: var(--color-background);
+}
 
 /* Fade-in Animation on Scroll */
-.content-wrapper > *, .text-column-content {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    transition-delay: 0.2s;
+.content-wrapper > *, .text-column-content > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition-delay: 0.2s;
 }
-.section.visible .content-wrapper > *, .section.visible .text-column-content {
-    opacity: 1; transform: translateY(0);
+.section.visible .content-wrapper > *,
+.section.visible .text-column-content > * {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Responsive */
+/* ======================================= */
+/* == RESPONSIVE DESIGN (TABLET & UP) ==  */
+/* ======================================= */
 @media (max-width: 768px) {
-    .section { padding: 100px 25px; min-height: 80vh; }
-    #hero h1 { font-size: 2.6rem; }
-    #hero p { font-size: 1rem; }
+  .section { padding: 6.25rem 1.5rem; min-height: auto; }
+  #essence { min-height: auto; }
+  .two-column-layout { flex-direction: column; }
+  .text-column { text-align: center; padding: 6.25rem 1.5rem; flex-basis: auto; }
+  .image-column { flex-basis: 60vh; }
+  .text-column-content { text-align: center; }
+  footer { font-size: 0.8rem; }
+}
 
-    #philosophy p { font-size: 1.2rem; line-height: 1.8; }
-    #philosophy strong { font-size: 1.5rem; }
-
-    #essence { min-height: auto; }
-    .two-column-layout { flex-direction: column; }
-    .text-column { text-align: center; padding: 100px 25px; flex-basis: auto; }
-    .image-column { flex-basis: 60vh; }
-    .text-column h2 { font-size: 2.2rem; }
-
-    #origin p { font-size: 1.2rem; line-height: 1.8; }
-    #promise h2 { font-size: 2.0rem; }
-    footer { font-size: 0.8rem; }
+/* ======================================= */
+/* == RESPONSIVE DESIGN (SMALL MOBILE) == */
+/* ======================================= */
+@media (max-width: 480px) {
+  html { font-size: 95%; }
+  .section { padding: 4rem 1.5rem; }
+  #hero h1 { font-size: clamp(2.2rem, 10vw, 2.6rem); }
+  #philosophy p { font-size: clamp(1.1rem, 4.5vw, 1.2rem); }
+  .text-column { padding: 4rem 1.5rem; }
 }
