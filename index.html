@@ -15,13 +15,22 @@
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--font-sans);font-weight:300}
     main{display:block}
-    .section{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;box-sizing:border-box;padding:140px 40px;overflow:hidden}
+
+    /* 섹션 기본 */
+    .section{
+      width:100%; min-height:100vh;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      position:relative; box-sizing:border-box; padding:140px 40px; overflow:hidden;
+    }
     .content-wrapper{max-width:1100px;width:100%;z-index:2}
-    .video-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-    .overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);z-index:1}
+    .video-background{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
+    .overlay{position:absolute; inset:0; background:rgba(0,0,0,.25); z-index:1}
+
+    /* 히어로 텍스트 */
     #hero .content-wrapper{color:#fff}
     #hero h1{font-family:var(--font-serif);font-size:3.2rem;font-weight:500;line-height:1.4;margin:0 0 24px}
     #hero p{font-size:1.05rem;letter-spacing:.5px}
+
     @media (max-width:768px){
       .section{padding:100px 25px;min-height:80vh}
       #hero h1{font-size:2.4rem}
@@ -29,7 +38,7 @@
     }
   </style>
 
-  <!-- Google Fonts 최적화 -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap"
@@ -38,29 +47,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
   </noscript>
 
-  <!-- 메인 CSS: preload → stylesheet -->
+  <!-- 메인 CSS -->
   <link rel="preload" as="style" href="assets/css/style.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
 
   <!-- OVERRIDES: 메인 CSS 이후 적용 -->
   <style>
-    /* 섹션 간 여백: 공통 */
+    /* ===== Spacer 유틸 ===== */
     .spacer{height:64px}
-    @media (max-width:768px){ .spacer{height:56px} }
+    .spacer--sm{height:40px}
+    .spacer--md{height:64px}
+    .spacer--lg{height:96px}
+    .spacer--xl{height:128px}
     .spacer-accent{background:var(--color-accent)}
     .spacer-bg{background:var(--color-background)}
+    @media (max-width:768px){
+      .spacer{height:56px}
+      .spacer--sm{height:32px}
+      .spacer--md{height:48px}
+      .spacer--lg{height:72px}
+      .spacer--xl{height:96px}
+    }
 
-    /* 섹션4 텍스트/이미지 사이 흰 여백(수평/수직 모두 반영) */
+    /* 섹션4 텍스트/이미지 사이 흰 여백 */
     .two-column-layout{gap:clamp(16px,4vw,32px)}
 
-    /* 섹션5 제목 크기 = 1.8rem */
+    /* 섹션5 제목 1.8rem 고정 */
     #promise h2{font-size:1.8rem;line-height:1.5}
 
-    /* 모바일에서 영상 ‘세로 길이’ 80% 수준으로 축소 */
+    /* 모바일: 영상 높이 80% 수준(이전보다 짧게) */
     @media (max-width:768px){
       #hero, #origin{
-        min-height:92vh;         /* 대략 기존 115vh의 80% */
-        aspect-ratio:3 / 4;      /* 너무 길지 않게 비율 완화 */
+        min-height:92vh;   /* 약 80% */
+        aspect-ratio:3 / 4;
       }
     }
   </style>
@@ -78,20 +97,28 @@
       </div>
     </section>
 
-    <!-- 섹션1과 섹션2 사이: 섹션2 배경색 여백 -->
-    <div class="spacer spacer-accent" aria-hidden="true"></div>
+    <!-- 섹션1→2 사이: 섹션2 배경색 여백 -->
+    <div class="spacer spacer-accent spacer--md" aria-hidden="true"></div>
 
     <!-- SECTION 2: PHILOSOPHY -->
     <section id="philosophy" class="section" aria-labelledby="philosophy-title" style="background:var(--color-accent)">
       <div class="content-wrapper">
         <h2 id="philosophy-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">브랜드 철학</h2>
+
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-        <p><br><strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+
+        <!-- 'the day:n' 텍스트 대신 로고 표시 -->
+        <div style="margin:20px 0;">
+          <img src="assets/images/Logo.png" alt="the day:n 로고"
+               style="max-width:180px;height:auto;display:block;margin:0 auto" />
+        </div>
+
+        <p>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
       </div>
     </section>
 
-    <!-- 섹션2와 섹션3 사이: 섹션2 배경색 여백 -->
-    <div class="spacer spacer-accent" aria-hidden="true"></div>
+    <!-- 섹션2 하단 여백(조금 더, 같은 배경색) -->
+    <div class="spacer spacer-accent spacer--lg" aria-hidden="true"></div>
 
     <!-- SECTION 3: ORIGIN -->
     <section id="origin" class="section" aria-labelledby="origin-title">
@@ -103,6 +130,9 @@
         <p>가장 순수한 물을 찾아,<br>우리는 가장 깊은 곳으로 향했습니다.<br><br>그곳의 바람과 시간, 모든 것을 담아<br>당신의 피부에 온전히 전합니다.</p>
       </div>
     </section>
+
+    <!-- 섹션4 상단: 흰색 여백 많이 -->
+    <div class="spacer spacer-bg spacer--xl" aria-hidden="true"></div>
 
     <!-- SECTION 4: ESSENCE -->
     <section id="essence" class="section" aria-labelledby="essence-title" style="padding:0;min-height:100vh;display:flex">
@@ -118,8 +148,7 @@
           <img
             src="assets/images/section4.jpg"
             alt="the day:n 파우더 워시 감성 이미지"
-            loading="lazy"
-            decoding="async"
+            loading="lazy" decoding="async"
             width="800" height="1000"
             style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
           />
@@ -127,18 +156,22 @@
       </div>
     </section>
 
-    <!-- 섹션4와 섹션5 사이: 섹션5 배경색(=accent) 여백 -->
-    <div class="spacer spacer-accent" aria-hidden="true"></div>
+    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 -->
+    <div class="spacer spacer-accent spacer--md" aria-hidden="true"></div>
 
     <!-- SECTION 5: PROMISE -->
     <section id="promise" class="section" aria-labelledby="promise-title" style="background:var(--color-accent)">
       <div class="content-wrapper">
-        <h2 id="promise-title" style="font-family:var(--font-serif);line-height:1.6;margin:0 0 40px">
+        <h2 id="promise-title" style="font-family:var(--font-serif);margin:0 0 40px">
           당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.
         </h2>
         <img src="assets/images/Logo.png" alt="the day:n 로고" style="max-width:180px;height:auto;margin-top:20px" />
       </div>
     </section>
+
+    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 -->
+    <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
+
   </main>
 
   <footer style="padding:50px 20px;text-align:center;font-size:.9rem;color:#888;background:var(--color-background)">
