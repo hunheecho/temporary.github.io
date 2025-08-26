@@ -196,6 +196,15 @@
     aspect-ratio: auto !important;    /* 4:5 강제 해제 */
     object-fit: cover !important;     /* 여전히 꽉 채우되 */
     object-position: 50% 65% !important; /* 보이는 영역 미세 조정 */
+
+/* Desktop only: s4 image show more bottom */
+@media (min-width:1024px){
+  #essence .image-column img{
+    object-position: 50% 65% !important; /* 아래 더 보이게. 60~80% 사이로 조절 */
+  }
+}
+
+
   }
 }
 
