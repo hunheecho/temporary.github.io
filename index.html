@@ -75,24 +75,12 @@
     /* 섹션5 제목 1.8rem 고정 */
     #promise h2{font-size:1.8rem;line-height:1.5}
 
-    /* 모바일: 영상 높이 80% 수준(짧게) */
+    /* 모바일: 영상 높이 80% 수준(이전보다 짧게) */
     @media (max-width:768px){
-      #hero, #origin{ min-height:92vh; aspect-ratio:3 / 4; }
-    }
-
-    /* === 섹션2: 로고+조사(은) 처리 === */
-    .philosophy-brand{
-      display:flex; align-items:center; justify-content:center; gap:8px; margin:20px 0;
-    }
-    .philosophy-logo{ max-width:180px; height:auto; display:block; }
-    .only-mobile{ display:none; } /* 조사 '은'은 기본 숨김 → 모바일에서만 표시 */
-
-    @media (max-width:768px){
-      /* 로고를 1/4 크기로 (컨테이너 폭 대비 25%) */
-      .philosophy-logo{ width:25%; max-width:none; }
-      .only-mobile{ display:inline; }
-      /* 섹션4 제목 80%로 축소(3rem → 2.4rem) */
-      #essence-title{ font-size:2.4rem !important; }
+      #hero, #origin{
+        min-height:92vh;   /* 약 80% */
+        aspect-ratio:3 / 4;
+      }
     }
   </style>
 </head>
@@ -119,17 +107,17 @@
 
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
 
-        <!-- 로고 + (모바일 전용) 조사 '은' -->
-        <div class="philosophy-brand">
-          <img class="philosophy-logo" src="assets/images/Logo.png" alt="the day:n 로고" />
-          <span class="only-mobile" aria-hidden="true">은</span>
+        <!-- 'the day:n' 텍스트 대신 로고 표시 -->
+        <div style="margin:20px 0;">
+          <img src="assets/images/Logo.png" alt="the day:n 로고"
+               style="max-width:45px;height:auto;display:block;margin:0 auto" />
         </div>
 
-        <p>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+        은<p>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
       </div>
     </section>
 
-    <!-- 섹션2 하단 여백(같은 배경색) -->
+    <!-- 섹션2 하단 여백(조금 더, 같은 배경색) -->
     <div class="spacer spacer-accent spacer--lg" aria-hidden="true"></div>
 
     <!-- SECTION 3: ORIGIN -->
@@ -143,7 +131,7 @@
       </div>
     </section>
 
-    <!-- 섹션4 상단: 흰색 여백 크게 -->
+    <!-- 섹션4 상단: 흰색 여백 많이 -->
     <div class="spacer spacer-bg spacer--xl" aria-hidden="true"></div>
 
     <!-- SECTION 4: ESSENCE -->
@@ -151,9 +139,47 @@
       <div class="two-column-layout" style="display:flex;width:100%;align-items:stretch">
         <div class="text-column" style="flex-basis:50%;display:flex;align-items:center;justify-content:center;text-align:left;box-sizing:border-box;padding:5%">
           <div class="text-column-content" style="max-width:450px">
-            <h2 id="essence-title" style="font-family:var(--font-serif);font-size:3rem;margin:0 0 25px">본질에 집중하다.</h2>
+            <h2 id="essence-title" style="font-family:var(--font-serif);font-size:2.4rem;margin:0 0 25px">본질에 집중하다.</h2>
             <p style="font-size:1.1rem;line-height:1.9;margin:0 0 1.2em">정제수 대신, 수억 년의 시간을 간직한 해양 심층수의 미네랄을 담았습니다.</p>
             <p style="font-size:1.1rem;line-height:1.9;margin:0 0 1.2em">자연에서 얻은 옥수수 전분과 파파인 효소가 만나 가장 부드럽지만 완벽한 정화를 선사합니다.</p>
           </div>
         </div>
-        <div class="image-column" style="flex-b
+        <div class="image-column" style="flex-basis:50%">
+          <img
+            src="assets/images/section4.jpg"
+            alt="the day:n 파우더 워시 감성 이미지"
+            loading="lazy" decoding="async"
+            width="800" height="1000"
+            style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 -->
+    <div class="spacer spacer-accent spacer--md" aria-hidden="true"></div>
+
+    <!-- SECTION 5: PROMISE -->
+    <section id="promise" class="section" aria-labelledby="promise-title" style="background:var(--color-accent)">
+      <div class="content-wrapper">
+        <h2 id="promise-title" style="font-family:var(--font-serif);margin:0 0 40px">
+          당신의 가장 빛나는 날은<br>오늘부터 시작됩니다.
+        </h2>
+        <img src="assets/images/Logo.png" alt="the day:n 로고" style="max-width:180px;height:auto;margin-top:20px" />
+      </div>
+    </section>
+
+    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 -->
+    <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
+
+  </main>
+
+  <footer style="padding:50px 20px;text-align:center;font-size:.9rem;color:#888;background:var(--color-background)">
+    <p>&copy; 2025 attention international. All Rights Reserved.</p>
+    <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
+  </footer>
+
+  <!-- JS 지연 로딩 -->
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>
