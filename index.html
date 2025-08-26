@@ -83,24 +83,27 @@
     /* =============================== */
     /* === TYPOGRAPHY CONTROL ZONE === */
     /* =============================== */
-    /* 1) 기본값 */
+    /* 1) 기본값(모바일과 동일하게 두거나, 필요 시 여기서 조정) */
     :root{
-      --typo-hero-h1: 3.2rem;
+      --typo-hero-h1: 3.2rem;     /* fallback: 기존 값 */
       --typo-hero-p:  1.05rem;
 
-      --typo-phil-p: initial;
+      /* 철학/원천은 기본값은 그대로 두고, 미디어쿼리에서만 키움 */
+      --typo-phil-p: initial;     /* initial → 기존 스타일 유지 */
       --typo-phil-lh: initial;
 
       --typo-origin-p: initial;
       --typo-origin-lh: initial;
 
+      /* 섹션4는 현재 인라인 폰트(제목 2.4rem, 본문 1.0rem)를 기본으로 둠 */
       --typo-essence-title: 2.4rem;
       --typo-essence-p:     1.0rem;
 
+      /* 섹션5 제목은 고정 1.8rem(요청사항) */
       --typo-promise-h2: 1.8rem;
     }
 
-    /* 실제 적용 */
+    /* 2) 실제 적용 셀렉터 (변수 사용) */
     #hero h1{ font-size: var(--typo-hero-h1, 3.2rem); }
     #hero p { font-size: var(--typo-hero-p,  1.05rem); }
 
@@ -119,105 +122,71 @@
 
     #promise h2{ font-size: var(--typo-promise-h2, 1.8rem); line-height:1.5; }
 
-    /* 섹션2 'the day:n'만 변수로 제어 */
-    #philosophy strong{ font-size: var(--typo-phil-strong, 2.1rem) !important; }
+/* 3) 모바일(≤768px) — 섹션별 폰트 사이즈 */
+@media (max-width:768px){
+  :root{
+    /* SECTION 1: HERO */
+    --typo-hero-h1: 2.4rem;
+    --typo-hero-p:  0.95rem;
 
-    /* 3) 모바일(≤768px) */
-    @media (max-width:768px){
-      :root{
-        --typo-hero-h1: 2.4rem;
-        --typo-hero-p:  0.95rem;
+    /* SECTION 2: PHILOSOPHY */
+    --typo-phil-p:       1.2rem;   /* 본문 */
+    --typo-phil-lh:      1.8;
+    --typo-phil-strong:  1.6rem;   /* 'the day:n' 굵은 글자 */
 
-        --typo-phil-p:       1.2rem;
-        --typo-phil-lh:      1.8;
-        --typo-phil-strong:  1.6rem;
+    /* SECTION 3: ORIGIN */
+    --typo-origin-p:   1.2rem;
+    --typo-origin-lh:  1.8;
 
-        --typo-origin-p:   1.2rem;
-        --typo-origin-lh:  1.8;
+    /* SECTION 4: ESSENCE */
+    --typo-essence-title: 2.2rem;
+    --typo-essence-p:     1.15rem;
 
-        --typo-essence-title: 2.2rem;
-        --typo-essence-p:     1.15rem;
+    /* SECTION 5: PROMISE */
+    --typo-promise-h2: 1.8rem;
+  }
+}
 
-        --typo-promise-h2: 1.8rem;
-      }
-    }
+/* 4) 태블릿(769–1023px) — 섹션별 폰트 사이즈 */
+@media (min-width:769px) and (max-width:1023px){
+  :root{
+    --typo-hero-h1: 3.4rem;
+    --typo-hero-p:  1.08rem;
 
-    /* 4) 태블릿(769–1023px) */
-    @media (min-width:769px) and (max-width:1023px){
-      :root{
-        --typo-hero-h1: 3.4rem;
-        --typo-hero-p:  1.08rem;
+    --typo-phil-p:       1.4rem;
+    --typo-phil-lh:      1.9;
+    --typo-phil-strong:  1.8rem;
 
-        --typo-phil-p:       1.4rem;
-        --typo-phil-lh:      1.9;
-        --typo-phil-strong:  1.8rem;
+    --typo-origin-p:   1.4rem;
+    --typo-origin-lh:  1.9;
 
-        --typo-origin-p:   1.4rem;
-        --typo-origin-lh:  1.9;
+    --typo-essence-title: 2.6rem;
+    --typo-essence-p:     1.1rem;
 
-        --typo-essence-title: 2.6rem;
-        --typo-essence-p:     1.1rem;
+    --typo-promise-h2: 2.6rem;
+  }
+}
 
-        --typo-promise-h2: 2.6rem;
-      }
-    }
+/* 5) 데스크탑(≥1024px) — 섹션별 폰트 사이즈 */
+@media (min-width:1024px){
+  :root{
+    --typo-hero-h1: 4.0rem;
+    --typo-hero-p:  1.6rem;
 
-    /* 5) 데스크탑(≥1024px) */
-    @media (min-width:1024px){
-      :root{
-        --typo-hero-h1: 4.0rem;
-        --typo-hero-p:  1.6rem;
+    --typo-phil-p:       2.2rem;
+    --typo-phil-lh:      2.0;
+    --typo-phil-strong:  2.6rem;   /* inline 2.1rem 대체 */
 
-        --typo-phil-p:       2.2rem;
-        --typo-phil-lh:      2.0;
-        --typo-phil-strong:  2.6rem;
+    --typo-origin-p:   2.2rem;
+    --typo-origin-lh:  2.0;
 
-        --typo-origin-p:   2.2rem;
-        --typo-origin-lh:  2.0;
+    --typo-essence-title: 3.0rem;
+    --typo-essence-p:     1.20rem;
 
-        --typo-essence-title: 3.0rem;
-        --typo-essence-p:     1.20rem;
+    --typo-promise-h2: 2.6rem;
+  }
+}
 
-        --typo-promise-h2: 2.6rem;
-      }
-    }
-
-    /* === Section 4 image: no crop, still large === */
-    #essence .image-column{ 
-      overflow: hidden;
-      display:flex; align-items:center; justify-content:center;
-    }
-
-    /* 모바일: 기존 흐름 유지(넓이 100%) */
-    @media (max-width:768px){
-      #essence .s4img{ width:100%; height:auto; }
-    }
-
-    /* 태블릿: 크게 보이되 잘림 없음 */
-    @media (min-width:769px) and (max-width:1023px){
-      #essence .text-column{  flex-basis:45%; }
-      #essence .image-column{ flex-basis:55%; }
-      #essence .s4img{
-        width:min(100%, 900px);
-        height:auto !important;
-        max-height:78vh;
-        object-fit:contain !important;
-        object-position:center center !important;
-      }
-    }
-
-    /* 데스크탑: 더 크게 보이되 잘림 없음 */
-    @media (min-width:1024px){
-      #essence .text-column{  flex-basis:40%; }
-      #essence .image-column{ flex-basis:60%; }
-      #essence .s4img{
-        width:min(100%, 1100px);
-        height:auto !important;
-        max-height:82vh;
-        object-fit:contain !important;
-        object-position:center center !important;
-      }
-    }
   </style>
 </head>
 <body>
@@ -242,7 +211,7 @@
         <h2 id="philosophy-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">브랜드 철학</h2>
 
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-        <p><br><strong style="font-family:var(--font-serif);font-weight:500">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+        <p><br><strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
       </div>
     </section>
 
@@ -260,7 +229,7 @@
       </div>
     </section>
 
-    <!-- 섹션4 상단: 흰색 여백 -->
+    <!-- 섹션4 상단: 흰색 여백 (요청대로 lg 2줄) -->
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
 
@@ -276,18 +245,17 @@
         </div>
         <div class="image-column" style="flex-basis:50%">
           <img
-            class="s4img"
             src="assets/images/section4.jpg"
             alt="the day:n 파우더 워시 감성 이미지"
             loading="lazy" decoding="async"
             width="800" height="1000"
-            style="display:block;width:100%;height:auto"
+            style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
           />
         </div>
       </div>
     </section>
 
-    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 -->
+    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 (xl 2줄 유지) -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
@@ -301,7 +269,7 @@
       </div>
     </section>
 
-    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 -->
+    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 (xl 2줄 유지) -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
