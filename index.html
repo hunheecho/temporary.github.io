@@ -216,6 +216,27 @@
 }
 
 
+/* === FIX: Section 4 image — show full image (no top/bottom crop) === */
+/* Tablet & Desktop */
+@media (min-width:769px){
+  #essence .image-column{
+    display: flex;
+    align-items: center;     /* 세로 가운데 */
+    justify-content: center; /* 가로 가운데 */
+    overflow: hidden;
+  }
+  #essence .image-column img{
+    width: 100% !important;
+    height: auto !important;       /* ← 100% 강제 해제 */
+    max-height: 100% !important;   /* 칼럼 높이 넘지 않도록 */
+    aspect-ratio: auto !important; /* 4:5 강제 해제 */
+    object-fit: contain !important;/* 전체 보이게(자름 X) */
+    object-position: center center !important;
+    transform: none !important;    /* 혹시 남아있을 이동값 제거 */
+  }
+}
+
+
 
   </style>
 </head>
