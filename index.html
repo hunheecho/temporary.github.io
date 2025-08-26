@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>the day:n - The Ritual of Purity</title>
 
-  <!-- Critical CSS: above-the-fold 최소 스타일 -->
+  <!-- Critical CSS (필수 최소 스타일) -->
   <style>
-    :root{--font-serif:'Playfair Display',serif;--font-sans:'IBM Plex Sans KR',sans-serif;--color-text:#2c2c2c;--color-background:#fdfdfc;--color-accent:#f4f1ea}
+    :root{
+      --font-serif:'Playfair Display',serif;
+      --font-sans:'IBM Plex Sans KR',sans-serif;
+      --color-text:#2c2c2c; --color-background:#fdfdfc; --color-accent:#f4f1ea;
+    }
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--font-sans);font-weight:300}
     main{display:block}
@@ -18,7 +22,11 @@
     #hero .content-wrapper{color:#fff}
     #hero h1{font-family:var(--font-serif);font-size:3.2rem;font-weight:500;line-height:1.4;margin:0 0 24px}
     #hero p{font-size:1.05rem;letter-spacing:.5px}
-    @media (max-width:768px){.section{padding:100px 25px;min-height:80vh}#hero h1{font-size:2.4rem}#hero p{font-size:.95rem}}
+    @media (max-width:768px){
+      .section{padding:100px 25px;min-height:80vh}
+      #hero h1{font-size:2.4rem}
+      #hero p{font-size:.95rem}
+    }
   </style>
 
   <!-- Google Fonts 최적화 -->
@@ -78,9 +86,14 @@
           </div>
         </div>
         <div class="image-column" style="flex-basis:50%">
-          <img src="assets/images/section4.jpg" alt="the day:n 파우더 워시 감성 이미지"
-               loading="lazy" decoding="async"
-               style="width:100%;height:100%;object-fit:cover;display:block" />
+          <img
+            src="assets/images/section4.jpg"
+            alt="the day:n 파우더 워시 감성 이미지"
+            loading="lazy"
+            decoding="async"
+            width="800" height="1000"
+            style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
+          />
         </div>
       </div>
     </section>
