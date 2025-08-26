@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>the day:n - The Ritual of Purity</title>
 
-  <!-- Critical CSS -->
+  <!-- Critical CSS: 최소 필수 -->
   <style>
     :root{
       --font-serif:'Playfair Display',serif;
@@ -16,7 +16,7 @@
     body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--font-sans);font-weight:300}
     main{display:block}
 
-    /* Section base */
+    /* 섹션 기본 */
     .section{
       width:100%; min-height:100vh;
       display:flex; align-items:center; justify-content:center; text-align:center;
@@ -26,7 +26,7 @@
     .video-background{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
     .overlay{position:absolute; inset:0; background:rgba(0,0,0,.25); z-index:1}
 
-    /* Hero text */
+    /* 히어로 텍스트 */
     #hero .content-wrapper{color:#fff}
     #hero h1{font-family:var(--font-serif);font-size:3.2rem;font-weight:500;line-height:1.4;margin:0 0 24px}
     #hero p{font-size:1.05rem;letter-spacing:.5px}
@@ -38,7 +38,7 @@
     }
   </style>
 
-  <!-- Google Fonts (optimized) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap"
@@ -47,13 +47,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
   </noscript>
 
-  <!-- Main CSS -->
+  <!-- 메인 CSS -->
   <link rel="preload" as="style" href="assets/css/style.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
 
-  <!-- OVERRIDES -->
+  <!-- OVERRIDES: 메인 CSS 이후 적용 -->
   <style>
-    /* ===== Spacers ===== */
+    /* ===== Spacer 유틸 ===== */
     .spacer{height:64px}
     .spacer--sm{height:40px}
     .spacer--md{height:64px}
@@ -69,13 +69,13 @@
       .spacer--xl{height:96px}
     }
 
-    /* s4 text/image gap */
+    /* 섹션4 텍스트/이미지 사이 흰 여백 */
     .two-column-layout{gap:clamp(16px,4vw,32px)}
 
-    /* Mobile: shorter videos */
+    /* 모바일: 영상 높이 80% 수준(이전보다 짧게) */
     @media (max-width:768px){
       #hero, #origin{
-        min-height:92vh;
+        min-height:92vh;   /* 약 80% */
         aspect-ratio:3 / 4;
       }
     }
@@ -83,14 +83,13 @@
     /* =============================== */
     /* === TYPOGRAPHY CONTROL ZONE === */
     /* =============================== */
-    /* 1) Defaults */
+    /* 1) 기본값 */
     :root{
       --typo-hero-h1: 3.2rem;
       --typo-hero-p:  1.05rem;
 
       --typo-phil-p: initial;
       --typo-phil-lh: initial;
-      --typo-phil-strong: 2.1rem; /* 'the day:n' 기본값 */
 
       --typo-origin-p: initial;
       --typo-origin-lh: initial;
@@ -101,7 +100,7 @@
       --typo-promise-h2: 1.8rem;
     }
 
-    /* 2) Apply */
+    /* 실제 적용 */
     #hero h1{ font-size: var(--typo-hero-h1, 3.2rem); }
     #hero p { font-size: var(--typo-hero-p,  1.05rem); }
 
@@ -109,20 +108,21 @@
       font-size:  var(--typo-phil-p, inherit);
       line-height:var(--typo-phil-lh, inherit);
     }
-    /* 'the day:n'만 제어 */
-    #philosophy strong{ font-size: var(--typo-phil-strong, 2.1rem) !important; }
-
     #origin .content-wrapper p{
       font-size:  var(--typo-origin-p, inherit);
       line-height:var(--typo-origin-lh, inherit);
     }
 
+    /* 인라인 스타일을 덮기 위해 !important */
     #essence-title{ font-size: var(--typo-essence-title, 2.4rem) !important; }
     #essence .text-column p{ font-size: var(--typo-essence-p, 1rem) !important; }
 
     #promise h2{ font-size: var(--typo-promise-h2, 1.8rem); line-height:1.5; }
 
-    /* 3) Mobile (≤768px) */
+    /* 섹션2 'the day:n'만 변수로 제어 */
+    #philosophy strong{ font-size: var(--typo-phil-strong, 2.1rem) !important; }
+
+    /* 3) 모바일(≤768px) */
     @media (max-width:768px){
       :root{
         --typo-hero-h1: 2.4rem;
@@ -142,7 +142,7 @@
       }
     }
 
-    /* 4) Tablet (769–1023px) */
+    /* 4) 태블릿(769–1023px) */
     @media (min-width:769px) and (max-width:1023px){
       :root{
         --typo-hero-h1: 3.4rem;
@@ -162,7 +162,7 @@
       }
     }
 
-    /* 5) Desktop (≥1024px) */
+    /* 5) 데스크탑(≥1024px) */
     @media (min-width:1024px){
       :root{
         --typo-hero-h1: 4.0rem;
@@ -182,31 +182,41 @@
       }
     }
 
-    /* === Section4 image sizing (tablet & desktop) === */
-    #essence .image-column{ overflow:hidden; }
-
-    @media (min-width:769px) and (max-width:1023px){ /* Tablet */
-      #essence .s4img{
-        width:100% !important;
-        height:100% !important;
-        aspect-ratio:auto !important;
-        object-fit:cover !important;
-        object-position:50% 78% !important; /* 아래쪽 더 보이게: 70~85%로 조정 가능 */
-        transform:none !important;
-      }
+    /* === Section 4 image: no crop, still large === */
+    #essence .image-column{ 
+      overflow: hidden;
+      display:flex; align-items:center; justify-content:center;
     }
-    @media (min-width:1024px){ /* Desktop */
-      #essence .s4img{
-        width:100% !important;
-        height:100% !important;
-        aspect-ratio:auto !important;
-        object-fit:cover !important;
-        object-position:50% 78% !important;
-        transform:none !important;
-      }
-      /* 데스크탑에서 이미지 칼럼 좀 더 넓게 */
+
+    /* 모바일: 기존 흐름 유지(넓이 100%) */
+    @media (max-width:768px){
+      #essence .s4img{ width:100%; height:auto; }
+    }
+
+    /* 태블릿: 크게 보이되 잘림 없음 */
+    @media (min-width:769px) and (max-width:1023px){
       #essence .text-column{  flex-basis:45%; }
       #essence .image-column{ flex-basis:55%; }
+      #essence .s4img{
+        width:min(100%, 900px);
+        height:auto !important;
+        max-height:78vh;
+        object-fit:contain !important;
+        object-position:center center !important;
+      }
+    }
+
+    /* 데스크탑: 더 크게 보이되 잘림 없음 */
+    @media (min-width:1024px){
+      #essence .text-column{  flex-basis:40%; }
+      #essence .image-column{ flex-basis:60%; }
+      #essence .s4img{
+        width:min(100%, 1100px);
+        height:auto !important;
+        max-height:82vh;
+        object-fit:contain !important;
+        object-position:center center !important;
+      }
     }
   </style>
 </head>
@@ -223,7 +233,7 @@
       </div>
     </section>
 
-    <!-- spacer (section2 bg color) -->
+    <!-- 섹션1→2 사이: 섹션2 배경색 여백 -->
     <div class="spacer spacer-accent spacer--md" aria-hidden="true"></div>
 
     <!-- SECTION 2: PHILOSOPHY -->
@@ -232,11 +242,11 @@
         <h2 id="philosophy-title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">브랜드 철학</h2>
 
         <p>우리는 가장 평범한 순간이<br>가장 특별해질 수 있다고 믿습니다.</p>
-        <p><br><strong style="font-family:var(--font-serif);font-weight:500;font-size:2.1rem">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
+        <p><br><strong style="font-family:var(--font-serif);font-weight:500">the day:n</strong>은<br>당신의 하루가 시작되는<br>그 찰나의 순간에 주목합니다.</p>
       </div>
     </section>
 
-    <!-- spacer (same bg) -->
+    <!-- 섹션2 하단 여백(조금 더, 같은 배경색) -->
     <div class="spacer spacer-accent spacer--lg" aria-hidden="true"></div>
 
     <!-- SECTION 3: ORIGIN -->
@@ -250,7 +260,7 @@
       </div>
     </section>
 
-    <!-- spacer (white, large x2) -->
+    <!-- 섹션4 상단: 흰색 여백 -->
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
     <div class="spacer spacer-bg spacer--lg" aria-hidden="true"></div>
 
@@ -271,13 +281,13 @@
             alt="the day:n 파우더 워시 감성 이미지"
             loading="lazy" decoding="async"
             width="800" height="1000"
-            style="display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover"
+            style="display:block;width:100%;height:auto"
           />
         </div>
       </div>
     </section>
 
-    <!-- spacer (section5 bg, xl x2) -->
+    <!-- 섹션4→5 사이: 섹션5 배경색(=accent) 여백 -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
@@ -291,7 +301,7 @@
       </div>
     </section>
 
-    <!-- spacer (bottom, section5 bg, xl x2) -->
+    <!-- 섹션5 하단: 섹션5 배경색으로 여백 많이 -->
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
     <div class="spacer spacer-accent spacer--xl" aria-hidden="true"></div>
 
@@ -302,7 +312,7 @@
     <p>법인명: 어텐션 인터내셔널 | 주소: [회사 주소를 입력하세요]</p>
   </footer>
 
-  <!-- JS (deferred) -->
+  <!-- JS 지연 로딩 -->
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>
